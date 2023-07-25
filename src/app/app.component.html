@@ -1,0 +1,20 @@
+<app-header></app-header>
+
+<div class="container page-section">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>
+        Dairy, Bread & Eggs
+      </h3>
+    </div>
+    <div class="col-md-3" *ngFor="let product of productList">
+      <app-product-view [product]="product">
+        Hi
+        <div q>
+          Rahul
+        </div>
+        hello
+      </app-product-view>
+    </div>
+  </div>
+</div>

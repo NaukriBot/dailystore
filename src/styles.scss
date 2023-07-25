@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page-section{
+    margin-top: 20px;
+    h3{
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+
+.flex-space-between{
+    justify-content: space-between;
+}
+
+.strike-price{
+    text-decoration: line-through;
+}
+
+
