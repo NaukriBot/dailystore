@@ -8,13 +8,7 @@
       </h3>
     </div>
     <div class="col-md-3" *ngFor="let product of productList">
-      <app-product-view [product]="product">
-        Hi
-        <div q>
-          Rahul
-        </div>
-        hello
-      </app-product-view>
+      <app-product-card [product]="product"></app-product-card>
     </div>
   </div>
 </div>

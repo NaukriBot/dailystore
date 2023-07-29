@@ -1,29 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProductsService } from './products.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'webapp';
 
-  productList = [
-    {
-      "id":1,
-      "name":"Product A",
-      "weight":"200 gm",
-      "price":150, 
-      "discount":110,
-      "imageUrl":"https://material.angular.io/assets/img/examples/shiba2.jpg"
-    },
-    {
-      "id":2,
-      "name":"Product B",
-      "weight":"110 gm",
-      "price":200, 
-      "discount":190,
-      "imageUrl":"https://material.angular.io/assets/img/examples/shiba2.jpg"
-    },
-  ]
+  productList: any = []
+
+  constructor(public productService : ProductsService){
+
+  }
+
+  ngOnInit(){
+    this.productService.getProduct().subscribe((res)=>{
+      this.productList = res;
+    })
+  }
 }

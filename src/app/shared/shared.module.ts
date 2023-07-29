@@ -2,18 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { ToolbarModule } from './toolbar/toolbar.module';
-import { ProductViewModule } from './product-view/product-view.module';
-
-
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     MaterialModule,
     ToolbarModule,
-    ProductViewModule
+    ComponentsModule
   ],
-  exports: [MaterialModule,ToolbarModule,ProductViewModule]
+  exports: [MaterialModule,ToolbarModule,ComponentsModule]
 })
 export class SharedModule { }

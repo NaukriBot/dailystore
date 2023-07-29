@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { AppService } from './app.service';
+import { ProductsService } from './products.service';
 
 
 
@@ -18,7 +20,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [AppService,ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
