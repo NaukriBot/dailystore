@@ -1,0 +1,25 @@
+@import '../../../../assets/scss/variables'; // Adjust the number of ../ based on your folder structure
+
+
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  position: absolute;
+  padding: 6px 11px;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 30px;
+  font-weight: 500;
+  z-index: 1;
+  color: #fff;
+  transition: all 0.3s;
+}

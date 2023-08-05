@@ -63,3 +63,38 @@ $melody-accent-palette: (
     A700: white,
   )
 );
+
+
+$purple-palette: (
+  50: #F3E5F5,
+  100: #E1BEE7,
+  200: #CE93D8,
+  300: #BA68C8,
+  400: #AB47BC,
+  500: #9C27B0,
+  600: #8E24AA,
+  700: #7B1FA2,
+  800: #6A1B9A,
+  900: #4A148C,
+  A100: #EA80FC,
+  A200: #E040FB,
+  A400: #D500F9,
+  A700: #AA00FF,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+

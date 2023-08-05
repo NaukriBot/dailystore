@@ -43,6 +43,33 @@ export class CategoriesEffects {
     )
   );
 
+  updateCategories$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CategoriesActions.updateCategory),
+      switchMap(({ payload }) => {
+        const url = `http://localhost:4000/api/product-categories/${payload._id}`;
+        let obs: Observable<any>;
+        obs = this.http.put(url, payload);
+        return obs.pipe(
+          map((data: any) => {
+            console.log(data);
+            return CategoriesActions.updateCategorySuccess({
+              response: data,
+              toast: { type: 'SUCCESS', titleKey: 'CHANGES_SAVED' },
+            });
+          }),
+          catchError((error) =>
+            of(
+                CategoriesActions.updateCategoryFailure({
+                error,
+            })
+            )
+          )
+        );
+      })
+    )
+  );
+
   getCategories$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CategoriesActions.getAllCategories),
@@ -61,6 +88,33 @@ export class CategoriesEffects {
           catchError((error) =>
             of(
                 CategoriesActions.getAllCategoriesFailure({
+                error,
+            })
+            )
+          )
+        );
+      })
+    )
+  );
+
+  deleteCategories$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CategoriesActions.deleteCategory),
+      switchMap(({itemId}) => {
+        const url = `http://localhost:4000/api/product-categories/${itemId}`;
+        let obs: Observable<any>;
+        obs = this.http.delete(url);
+        return obs.pipe(
+          map((data: any) => {
+            console.log(data);
+            return CategoriesActions.deleteCategorySuccess({
+              response: data,
+              toast: { type: 'SUCCESS', titleKey: 'CHANGES_SAVED' },
+            });
+          }),
+          catchError((error) =>
+            of(
+                CategoriesActions.deleteCategoryFailure({
                 error,
             })
             )

@@ -1,0 +1,36 @@
+@import "./variables.scss"; // Adjust the number of ../ based on your folder structure
+.primary {
+  background-color: map-get(
+    $love-primary-palette,
+    500
+  ); // using the 500 shade for primary
+  color: map-get(
+    $love-primary-palette,
+    contrast,
+    500
+  ); // using the contrast color for text
+}
+
+.secondary {
+  background-color: map-get(
+    $love-primary-palette,
+    A200
+  ); // using the A200 shade for secondary
+  color: map-get(
+    $love-primary-palette,
+    contrast,
+    A200
+  ); // using the contrast color for text
+}
+
+.others-purple {
+  background-color: map-get(
+    $purple-palette,
+    A200
+  ); // using the A200 shade for secondary
+  color: map-get(
+    $purple-palette,
+    contrast,
+    A200
+  ); // using the contrast color for text
+}

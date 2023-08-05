@@ -5,6 +5,7 @@ import { MaterialModule } from '../material/material.module';
 import { CategoryCardComponent } from './category-card/category-card.component';
 import { FileUploaderSingleImageComponent } from './file-uploader/file-uploader-single-image/file-uploader-single-image.component';
 import { BaseModalComponent } from './base-modal/base-modal.component';
+import { CardBadgeComponent } from './card-badge/card-badge.component';
 
 
 
@@ -13,6 +14,7 @@ import { BaseModalComponent } from './base-modal/base-modal.component';
     CategoryCardComponent,
     ProductCardComponent,
     BaseModalComponent,
+    CardBadgeComponent,
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { BaseModalComponent } from './base-modal/base-modal.component';
   exports: [
     CategoryCardComponent,
     ProductCardComponent,
-    BaseModalComponent
+    BaseModalComponent,
+    CardBadgeComponent
   ]
 })
 export class ComponentsModule { }
