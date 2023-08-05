@@ -1,3 +1,44 @@
-<mat-toolbar color="primary">
-    <span>Daily Store</span>
+<mat-toolbar color="primary" class="app-header">
+    <div class="left-section d-flex flex-row align-items-center">
+        <mat-icon>
+            local_mall
+        </mat-icon>
+        <span style="margin-left: 2px;">Daily Store</span>
+    </div>
+
+    <div class="center-section">
+        <button mat-button routerLinkActive="active" routerLink="/dashboard">
+            Home
+        </button>
+        <button mat-button routerLinkActive="active" [routerLink]="['/categories','manage']">
+            Categories
+        </button>
+        <button mat-button routerLinkActive="active" [routerLink]="['/products','manage']">
+            Products
+        </button>
+        <button mat-button routerLinkActive="active" [routerLink]="['/orders']">
+            Orders
+        </button>
+        <button mat-button routerLinkActive="active" [routerLink]="['/orders']">
+            Customers
+        </button>
+        <button mat-button routerLinkActive="active" [routerLink]="['/orders']">
+            Finances
+        </button>
+        <button mat-button routerLinkActive="active" [routerLink]="['/orders']">
+            Analytics
+        </button>
+        <button mat-button routerLinkActive="active" [routerLink]="['/orders']">
+            Marketing
+        </button>
+        <button mat-button routerLinkActive="active" [routerLink]="['/orders']">
+            Discount
+        </button>
+    </div>
+    <div class="right-section">
+        <button mat-icon-button (click)="goToCart()">
+        <mat-icon>shopping_cart</mat-icon>
+        <mat-badge [matBadge]="getTotalItems()" matBadgeColor="accent" matBadgeSize="small"> </mat-badge>
+        </button>
+    </div>
 </mat-toolbar>

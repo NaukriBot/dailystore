@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { ToolbarModule } from './toolbar/toolbar.module';
 import { ComponentsModule } from './components/components.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EffectSharedModule } from './effect-shared/effect-shared.module';
 
 @NgModule({
   declarations: [
@@ -11,8 +13,11 @@ import { ComponentsModule } from './components/components.module';
     CommonModule,
     MaterialModule,
     ToolbarModule,
-    ComponentsModule
+    ComponentsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    EffectSharedModule
   ],
-  exports: [MaterialModule,ToolbarModule,ComponentsModule]
+  exports: [FormsModule,ReactiveFormsModule,MaterialModule,ToolbarModule,ComponentsModule]
 })
 export class SharedModule { }

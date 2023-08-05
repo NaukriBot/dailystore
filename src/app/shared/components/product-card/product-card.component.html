@@ -8,8 +8,8 @@
         {{product.weight}}
       </p>
     </mat-card-content>
-    <mat-card-actions class="flex flex-row flex-space-between">
-      <div class="flex flex-column">
+    <mat-card-actions class="d-flex flex-row flex-space-between">
+      <div class="d-flex flex-column">
         <span class="product-price">
           <mat-icon>
               currency_rupee
@@ -24,13 +24,20 @@
         </span>
       </div>
       <div class="quantity-container">
-        <button mat-raised-button color="primary"> -
-        </button>
-        <span>
-            10
-        </span>
-        <button mat-raised-button color="primary"> + 
-        </button>
+        <div *ngIf="isItemInCart(product.id)">
+          <button mat-raised-button color="primary" class="add-button"  (click)="addItemToCart(product)">Add</button>
+        </div>
+        <div *ngIf="!isItemInCart(product.id)" class="quantity-actions">
+          <button mat-icon-button color="primary" (click)="decrement(product.id)">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span>
+              {{getItemQty(product.id)}}
+          </span>
+          <button mat-icon-button color="primary" (click)="increment(product.id)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>        
       </div>
       
     </mat-card-actions>

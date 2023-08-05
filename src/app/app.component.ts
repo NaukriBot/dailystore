@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductsService } from './products.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, Subscription, takeUntil } from 'rxjs';
+import { ProductsService } from './core/providers/products.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnDestroy{
   title = 'webapp';
+  obsUnsubscribe = new Subject<any>();
 
   productList: any = []
 
@@ -16,8 +18,14 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.productService.getProduct().subscribe((res)=>{
-      this.productList = res;
+    const obs = this.productService.getProduct();
+    obs.subscribe((res)=>{
+        this.productList = res;
     })
+  
+  }
+
+  ngOnDestroy(){
+
   }
 }

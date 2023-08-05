@@ -1,0 +1,73 @@
+<div class="container page-section mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>My Cart</h3>
+      <div class="cart-box mb-3">
+        <mat-card *ngFor="let item of cartItems" class="mb-2 bill-card">
+          <div class="d-flex align-items-center">
+            <div class="product-image">
+              <img [src]="item.imageUrl" alt="{{ item.name }}">
+            </div>          
+            <div class="product-content">
+              <h5 class="card-title mb-2">{{ item.name }}</h5>
+              <p class="card-text mb-2">Weight: {{ item.weight }}</p>
+              <p class="card-price-text">
+                <del>{{ item.price | currency }}</del> 
+                <span>{{ item.discount | currency }}</span>
+              </p>
+              <div class="cart-item-actions d-flex justify-content-between align-items-center">
+                <div class="quantity-actions">
+                  <button mat-icon-button  color="primary" (click)="incrementQuantity(item)">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                  <span class="mx-2">{{ item.quantity }}</span>
+                  <button mat-icon-button  color="primary"  (click)="decrementQuantity(item)">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                </div>
+                <button mat-icon-button color="warn" (click)="removeFromCart(item)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Bill Details</h3>
+      <mat-card class="bill-card">
+        <mat-card-content>
+          <div class="bill-row">
+            <span class="bill-description">MRP</span>
+            <span class="bill-amount">₹627</span>
+          </div>
+          <div class="bill-row">
+            <span class="bill-description">Product discount</span>
+            <span class="bill-amount">₹139</span>
+          </div>
+          <div class="bill-row">
+            <span class="bill-description">Delivery charge</span>
+            <span class="bill-amount">₹25</span>
+          </div>
+          <div class="bill-row">
+            <span class="bill-description">High demand surge charge</span>
+            <span class="bill-amount">₹30</span>
+          </div>
+          <hr class="bill-divider" />
+          <div class="bill-row total-row">
+            <span class="bill-description"><strong>Grand total</strong></span>
+            <span class="bill-amount"><strong>₹518</strong></span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions class="proceed-button-container">
+          <button mat-raised-button color="primary" class="update-address-button" (click)="openDialog()">Update Your Address</button>
+          <button mat-raised-button color="primary" class="proceed-button" (click)="proceedToPay()">Proceed to Pay</button>
+          <ng-template appDynamicChildLoader></ng-template>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+

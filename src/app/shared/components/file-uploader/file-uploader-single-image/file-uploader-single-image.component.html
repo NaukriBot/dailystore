@@ -1,0 +1,30 @@
+<div class="pic-holder">
+    <!-- uploaded pic shown here -->
+    <img
+      class="pic"
+      [src]="options.imageUrl?options.imageUrl:'assets/img/empty-user.png'"
+    />
+  
+    <input
+      #fileInput
+      [id]="options.id"
+      class="uploadProfileInput"
+      type="file"
+      name="profile_pic"
+      accept="image/*"
+      (change)="onChange(fileInput)" 
+      style="opacity: 0"
+    />
+    <label [for]="options.id" class="upload-file-block">
+      <div class="text-center">
+        <div class="mb-2">
+          <i class="fa fa-camera fa-2x"></i>
+        </div>
+        <div class="text-uppercase">
+          Update <br />
+          Profile Photo
+        </div>
+      </div>
+    </label>
+  </div>
+  

@@ -1,0 +1,119 @@
+.mat-card {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.product-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 25%;
+  object-fit: fill;
+  border: 2px solid #ddd;
+}
+
+.product-content {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-text {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 5px;
+}
+
+.quantity-actions {
+  display: flex;
+  align-items: center;
+}
+
+.cart-box {
+  height: calc(100vh - 180px); /* Adjusting for padding and header */
+  overflow-y: auto; /* Adding scroll for overflowing content */
+  padding: 10px;
+}
+
+.cart-box::-webkit-scrollbar {
+  width: 6px; /* Adjust the width of the scrollbar */
+}
+
+.cart-box::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scroll thumb */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.cart-box::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color of the scroll thumb on hover */
+}
+
+.card-price-text{
+    margin: 0;
+}
+.card-price-text del {
+  color: #777;
+  margin-right: 4px;
+}
+
+.card-price-text span {
+  color: #333;
+  font-weight: bold;
+}
+
+.bill-card {
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+}
+
+.bill-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.bill-description {
+  font-size: 16px;
+}
+
+.bill-amount {
+  font-size: 16px;
+  color: #333;
+}
+
+.bill-divider {
+  border-color: #e0e0e0;
+}
+
+.total-row {
+  font-size: 18px;
+}
+
+.proceed-button-container {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.proceed-button {
+  width: 100%;
+}
+
+.update-address-button{
+    width: 100%;
+    margin-bottom: 10px;
+}

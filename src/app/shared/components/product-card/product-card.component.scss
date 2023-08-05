@@ -1,36 +1,47 @@
+.product-name {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 500;
+}
 
-.product-name{
-    margin-top: 15px;
-    font-size: 18px;
-    font-weight: 500;
+.product-weight {
+  font-size: 14px;
 }
-.product-weight{
-    font-size: 16px;
+
+.product-price {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
 }
-.product-price{
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    mat-icon{
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        width: auto;
-    }
+
+.product-price mat-icon {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+
+.strike-price {
+  text-decoration: line-through; /* This will apply a strike-through effect */
 }
 
 
 .quantity-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.quantity-container .add-button {
+  width: 24px;
+  height: 24px;
+}
+
+.quantity-actions{
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 5px;
-    button{
-        width:24px;
-        height: 24px;
-    }
     span{
-        font-size: 16px;
-        font-weight: bold;
+        font-weight: 600;
     }
 }
