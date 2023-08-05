@@ -1,4 +1,4 @@
-<app-base-modal [title]="'Add New Category'">
+<app-base-modal [title]="!isEdit?'Add New Category': 'Update Category'">
     <ng-container body>
         <form [formGroup]="form">
             <div class="row">
@@ -16,14 +16,13 @@
                 <div class="col-md-12" *ngIf="formType?.value === 'Sub Category'">
                     <div class="form-group">
                         <mat-form-field appearance="outline" class="w-100">
-                            <input matInput formControlName="categoryId" [matAutocomplete]="categoryAutocomplete" />
                             <mat-label>Category</mat-label>
-                        </mat-form-field>
-                        <mat-autocomplete #categoryAutocomplete="matAutocomplete" autoActiveFirstOption>
-                            <mat-option *ngFor="let option of categoryOptions$ | async" [value]="option.name">
-                                {{option.name}}
-                            </mat-option>
-                        </mat-autocomplete>
+                            <mat-select formControlName="categoryId" >
+                                <mat-option *ngFor="let option of categoryOptions$ | async" [value]="option._id">
+                                    {{option.name}}
+                                </mat-option>
+                            </mat-select>    
+                        </mat-form-field>                        
                     </div>
                 </div> 
                 <div class="col-md-12">
@@ -34,8 +33,6 @@
                         </mat-form-field>
                     </div>
                 </div>
-                
-                
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -47,11 +44,29 @@
                     </div>
                 </div> 
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Status</mat-label>
+                            <mat-select formControlName="status" >
+                                <mat-option *ngFor="let status of statusList" [value]="status" class="text-capitalize">
+                                    <span class="text-capitalize">
+                                        {{status}}
+                                    </span>
+                                </mat-option>
+                            </mat-select>    
+                        </mat-form-field>                        
+                    </div>
+                </div>
+            </div>
         </form>
     </ng-container>
     <ng-container actions>
         <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-button cdkFocusInitial (click)="onSubmit()">Submit</button>
+        <button mat-button cdkFocusInitial (click)="!isEdit?onSubmit():onUpdate()">
+            {{!isEdit?'Submit':'Update'}}
+        </button>
     </ng-container>
     
 </app-base-modal>

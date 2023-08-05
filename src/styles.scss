@@ -2,6 +2,8 @@
 
 @import "./assets/scss/variables";
 @import "./assets/scss/mat-themes.scss";
+@import "./assets/scss/mat-colors.scss";
+@import "./assets/scss/positions.scss";
 
 
 html, body { height: 100%; }
@@ -50,6 +52,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
     text-decoration: line-through;
 }
 
+
+.text-capitalize{
+    text-transform: capitalize;
+}
 
 
 .cursor-pointer{

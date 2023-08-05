@@ -1,0 +1,23 @@
+.top-left {
+  top: -10px;
+  left: 20px;
+}
+
+.top-right {
+  top: -10px;
+  right: 20px;
+  left: auto;
+}
+
+.bottom-left {
+  bottom: -10px;
+  left: 20px;
+  top: auto;
+}
+
+.bottom-right {
+  bottom: -10px;
+  right: 20px;
+  top: auto;
+  left: auto;
+}

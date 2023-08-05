@@ -16,6 +16,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { PortalModule } from '@angular/cdk/portal';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatChipsModule} from '@angular/material/chips';
 
 const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -32,7 +33,8 @@ const MATERIAL_MODULES = [
   MatAutocompleteModule,
   PortalModule,
   CdkMenuModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatChipsModule
 ];
 
 @NgModule({
