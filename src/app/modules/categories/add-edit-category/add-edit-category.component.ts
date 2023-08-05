@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { isEmpty } from 'lodash';
 import { Observable, debounceTime, map, startWith } from 'rxjs';
 import { BaseModalService } from 'src/app/core/providers';
 import * as CategoriesActions from 'src/app/core/redux/actions/categories.actions';
@@ -49,14 +50,18 @@ export class AddEditCategoryComponent {
   setupForm() {
     this.form = this.fb.group({
       name: ['', Validators.required],
-      category: [''],
+      categoryId: [''],
       description: ['', Validators.required],
-      imageUrl: ['', Validators.required],
+      status: ['active'],
     });
   }
 
   onSubmit() {
     console.log(this.form.value);
+    const payload = this.form.value;
+    if (isEmpty(payload.categoryId)) {
+      delete payload['categoryId'];
+    }
     this.store.dispatch(CategoriesActions.createCategory({ payload: this.form.value }));
   }
   

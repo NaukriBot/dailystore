@@ -20,7 +20,7 @@ export class CategoriesEffects {
     this.actions$.pipe(
       ofType(CategoriesActions.createCategory),
       switchMap(({ payload }) => {
-        const url = '/api/masters/categories';
+        const url = 'http://localhost:4000/api/product-categories';
         let obs: Observable<any>;
         obs = this.http.post(url, payload);
         return obs.pipe(
@@ -34,6 +34,33 @@ export class CategoriesEffects {
           catchError((error) =>
             of(
                 CategoriesActions.createCategoryFailure({
+                error,
+            })
+            )
+          )
+        );
+      })
+    )
+  );
+
+  getCategories$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CategoriesActions.getAllCategories),
+      switchMap(({}) => {
+        const url = 'http://localhost:4000/api/product-categories';
+        let obs: Observable<any>;
+        obs = this.http.get(url);
+        return obs.pipe(
+          map((data: any) => {
+            console.log(data);
+            return CategoriesActions.getAllCategoriesSuccess({
+              response: data,
+              toast: { type: 'SUCCESS', titleKey: 'CHANGES_SAVED' },
+            });
+          }),
+          catchError((error) =>
+            of(
+                CategoriesActions.getAllCategoriesFailure({
                 error,
             })
             )

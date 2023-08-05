@@ -16,7 +16,7 @@
                 <div class="col-md-12" *ngIf="formType?.value === 'Sub Category'">
                     <div class="form-group">
                         <mat-form-field appearance="outline" class="w-100">
-                            <input matInput formControlName="category" [matAutocomplete]="categoryAutocomplete" />
+                            <input matInput formControlName="categoryId" [matAutocomplete]="categoryAutocomplete" />
                             <mat-label>Category</mat-label>
                         </mat-form-field>
                         <mat-autocomplete #categoryAutocomplete="matAutocomplete" autoActiveFirstOption>

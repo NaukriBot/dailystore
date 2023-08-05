@@ -20,3 +20,13 @@ export const createCategoryFailure = createAction(
     '[Category] Create a new Category Failure',
     props<{ error: any }>()
 );
+
+export const getAllCategoriesSuccess = createAction(
+  '[Category] Get all Categories Success',
+  props<{ response: any, toast: any }>()
+);
+
+export const getAllCategoriesFailure = createAction(
+  '[Category] Get all Categories Failure',
+  props<{ error: any}>()
+);
