@@ -6,21 +6,31 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { AppService } from './app.service';
-import { ProductsService } from './products.service';
+import { ProductsService } from './core/providers';
+import { CartService } from './core/providers';
+import { DynamicChildLoaderDirective } from './core/directives/dynamic-child-loader.directive';
+import { StoreModule } from '@ngrx/store';
+import { REDUCER_TOKEN, metaReducers, reducerProvider } from './core/redux/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DynamicChildLoaderDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    HttpClientModule,
+    SharedModule,
+    StoreModule.forRoot(REDUCER_TOKEN, { metaReducers }),
+    EffectsModule.forRoot([]),
   ],
-  providers: [AppService,ProductsService],
+  providers: [AppService,reducerProvider,ProductsService,CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

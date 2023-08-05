@@ -30,4 +30,6 @@ export class ProductsService {
   getProduct = () =>{
     return of(this.productList);
   }
+
+  
 }

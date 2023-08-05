@@ -1,13 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "./assets/scss/variables";
+@import "./assets/scss/mat-themes.scss";
+
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #eee; }
+
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.app-content{
+    margin-top: 80px;
+}
+
 
 .page-section{
-    margin-top: 20px;
+    // margin-top: 20px;
+    padding: 16px 0px;
     h3{
-        font-size: 24px;
-        font-weight: 700;
+        font-size: 20px;
+        font-weight: 500;
     }
 }
 
@@ -33,3 +51,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 
+
+.cursor-pointer{
+    cursor: pointer;
+}

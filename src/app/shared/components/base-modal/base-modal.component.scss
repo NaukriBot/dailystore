@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    margin: 30px 0;
+    border-radius: 2px;
+}
+
+mat-dialog-content {
+    max-height: 100%;
+}

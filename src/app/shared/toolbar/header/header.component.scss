@@ -1,0 +1,26 @@
+/* CSS in your component's style file (e.g., toolbar.component.css) */
+:host {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-section {
+  flex: 1;
+}
+
+.center-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.active {
+  background: rgba(0, 0, 0, .2);
+}
