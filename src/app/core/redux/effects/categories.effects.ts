@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as fromStore from '../reducers/index';
-import { Store } from '@ngrx/store';
 
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
@@ -12,8 +10,7 @@ import * as CategoriesActions from '../actions/categories.actions';
 export class CategoriesEffects {
   constructor(
     private actions$: Actions,
-    private http: HttpClient,
-    private store: Store<fromStore.State>
+    private http: HttpClient
   ) {}
 
   createCategories$ = createEffect(() =>

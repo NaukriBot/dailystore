@@ -3,13 +3,17 @@ import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { Subject } from 'rxjs';
 
 import * as fromCategories from './categories.reducers';
+import * as fromProducts from './products.reducers';
+
 
 export interface State {
   categories: fromCategories.State,
+  products: fromProducts.State,
 }
 
 export const reducers: ActionReducerMap<State> = {
   categories: fromCategories.reducer,
+  products: fromProducts.reducer,
 };
 
 export const REDUCER_TOKEN = new InjectionToken<ActionReducerMap<State>>(

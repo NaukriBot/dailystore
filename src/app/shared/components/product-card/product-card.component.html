@@ -1,4 +1,7 @@
 <mat-card class="example-card">
+  <app-card-badge *ngIf="product" [badge]="product?.status" [color]="'others-purple'"></app-card-badge>
+  <app-card-badge *ngIf="product?.categoryInfo" [badge]="product?.categoryInfo?.name" [position]="'top-right'"></app-card-badge>    
+  
     <img mat-card-image [src]="product.imageUrl" [alt]="product.name">
     <mat-card-content>
       <p class="product-name">
@@ -14,16 +17,16 @@
           <mat-icon>
               currency_rupee
           </mat-icon>
-          {{product.discount}}
+          {{product.discountedPrice}}
         </span>
         <span class="product-price strike-price">
             <mat-icon>
               currency_rupee
             </mat-icon>
-            {{product.price}}
+            {{product.sellingPrice}}
         </span>
       </div>
-      <div class="quantity-container">
+      <!-- <div class="quantity-container">
         <div *ngIf="isItemInCart(product.id)">
           <button mat-raised-button color="primary" class="add-button"  (click)="addItemToCart(product)">Add</button>
         </div>
@@ -38,8 +41,12 @@
             <mat-icon>add</mat-icon>
           </button>
         </div>        
-      </div>
+      </div> -->
       
+    </mat-card-actions>
+    <mat-card-actions align="end">
+      <button mat-button (click)="onEdit(product)">Edit</button>
+      <button mat-button color="warn" (click)="onDelete(product)">Delete</button>
     </mat-card-actions>
   </mat-card>
 

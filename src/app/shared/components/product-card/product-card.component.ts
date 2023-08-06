@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CartService } from 'src/app/core/providers/cart.service';
 
 
@@ -9,6 +9,8 @@ import { CartService } from 'src/app/core/providers/cart.service';
 })
 export class ProductCardComponent {
   @Input() product: any = [];
+  @Output() edit = new EventEmitter<any>();
+  @Output() delete = new EventEmitter<any>(); 
 
   constructor(public cartService: CartService){
 
@@ -34,5 +36,11 @@ export class ProductCardComponent {
     this.cartService.cart$.subscribe((res:any)=>{
       console.log(res);
     })
+  }
+  onEdit(product:any){
+    this.edit.emit(this.product);
+  }
+  onDelete(product:any){
+    this.delete.emit(this.product);
   }
 }
