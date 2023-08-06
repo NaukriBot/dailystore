@@ -1,1 +1,146 @@
-<p>add-edit-product works!</p>
+<div class="container page-section">
+  <div class="row">
+    <div class="col-md-12 mb-4">
+      <mat-card>
+        <mat-card-content>
+          <div class="d-flex flex-row justify-content-between">
+            <h3
+              class="d-flex align-items-center"
+              style="font-size: 16px; font-weight: 450; margin-bottom: 0"
+            >
+              Add Product
+            </h3>
+            <div class="d-flex flex-row">
+              <button mat-raised-button color="primary">Save</button>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12">
+            <mat-card>
+              <mat-card-header>
+                <h3>Basic Information</h3>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field appearance="outline" class="w-100">
+                        <input matInput formControlName="name" />
+                        <mat-label>Name</mat-label>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field appearance="outline" class="w-100">
+                        <textarea
+                          matInput
+                          formControlName="description"
+                        ></textarea>
+                        <mat-label>Description</mat-label>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-12">
+            <mat-card>
+              <mat-card-header>
+                <h3>Pricing Information</h3>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <mat-form-field appearance="outline" class="w-100">
+                        <input matInput formControlName="discountedprice" />
+                        <mat-label>Discounted Price</mat-label>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <mat-form-field appearance="outline" class="w-100">
+                        <input matInput formControlName="sellingPrice" />
+                        <mat-label>Selling price</mat-label>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <mat-form-field appearance="outline" class="w-100">
+                        <input matInput formControlName="costPrice" />
+                        <mat-label>Cost Price</mat-label>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+              <mat-card>
+                <mat-card-header>
+                    <h3>Category Information</h3>
+                </mat-card-header>
+                <mat-card-content>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <mat-form-field appearance="outline" class="w-100">
+                          <mat-label>Status</mat-label>
+                          <mat-select formControlName="status">
+                            <mat-option
+                              *ngFor="let status of statusList"
+                              [value]="status"
+                              class="text-capitalize"
+                            >
+                              <span class="text-capitalize">
+                                {{ status }}
+                              </span>
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <mat-form-field appearance="outline" class="w-100">
+                          <mat-label>Category</mat-label>
+                          <mat-select formControlName="categoryId">
+                            <mat-option
+                              *ngFor="let option of categoryList"
+                              [value]="option._id"
+                            >
+                              {{ option.name }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+  </form>
+</div>
