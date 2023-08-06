@@ -77,7 +77,10 @@ export class AddEditCategoryComponent {
 
   private loadCatgeoryData(){
     console.log('changes');
-    this.store.select(CategoriesSelecors.getCategoriesList).subscribe((data: any) => this.categoryList = data);
+    this.store.select(CategoriesSelecors.getCategoriesList).subscribe((data: any) =>{
+      this.categoryList = data
+      console.log(this.categoryList)
+    });
   }
 
   setupForm() {

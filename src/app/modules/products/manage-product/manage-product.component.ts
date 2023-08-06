@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { takeUntil } from 'rxjs';
 import { ProductsService } from 'src/app/core/providers';
-import { onDestroy } from 'src/app/core/providers';
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-manage-product',
   templateUrl: './manage-product.component.html',
@@ -10,6 +9,7 @@ import { onDestroy } from 'src/app/core/providers';
 })
 export class ManageProductComponent {
   productService = inject(ProductsService);
+  router = inject(Router);
   productList: any[] = [];
   ngOnInit(){
     this.productService.getProduct().subscribe((res)=>{
@@ -17,6 +17,6 @@ export class ManageProductComponent {
     })  
   }
   addProduct(){
-    console.log('ad')
+    this.router.navigate(['/products/add-edit']);
   }
 }

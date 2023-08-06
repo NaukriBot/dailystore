@@ -27,7 +27,7 @@ export class ManageCategoryComponent implements OnInit{
     });
   }
   ngOnInit(){ 
-    this.store.dispatch(CategoriesActions.getAllCategories());
+    // this.store.dispatch(CategoriesActions.getAllCategories());
     this.store.select(CategorySelecors.getCategoriesList).subscribe((data: any) => this.productList = data);
   }
 
