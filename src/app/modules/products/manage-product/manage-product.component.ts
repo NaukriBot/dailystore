@@ -34,19 +34,28 @@ export class ManageProductComponent {
   handleEdit(product: any) {
     this.store.dispatch(ProductsActions.getProductById({ id: product.id }));
     this.actions$
-    .pipe(
-      ofType(ProductsActions.getProductByIdSuccess),
-      rxmap(() => {
-        this.router.navigate(['/products/add-edit'], {
-          queryParams: { productId: product.id },
-        });
-      })
-    )
-    .subscribe();
+      .pipe(
+        ofType(ProductsActions.getProductByIdSuccess),
+        rxmap(() => {
+          this.router.navigate(['/products/add-edit'], {
+            queryParams: { productId: product.id },
+          });
+        })
+      )
+      .subscribe();
   }
 
   handleDelete(product: any) {
     console.log('delete product', product);
+    this.store.dispatch(ProductsActions.deleteSelectedProduct({ id: product._id }));
+    this.actions$
+      .pipe(
+        ofType(ProductsActions.deleteSelectedProductSuccess),
+        rxmap(() => {
+          this.store.dispatch(ProductsActions.getAllProducts());
+        })
+      )
+      .subscribe();
   }
 
 }

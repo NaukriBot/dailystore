@@ -97,4 +97,59 @@ export class ProductsEffects {
             })
         )
     );
+
+    deleteSelectedProduct$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(ProductsActions.deleteSelectedProduct),
+            switchMap(({id}) => {
+                const url = `http://localhost:4000/api/products/${id}`;
+                let obs: Observable<any>;
+                obs = this.http.delete(url);
+                return obs.pipe(
+                    map((data: any) => {
+                        return ProductsActions.deleteSelectedProductSuccess({
+                            response: data,
+                            toast: { type: 'SUCCESS', titleKey: 'CHANGES_SAVED' },
+                        });
+                    }),
+                    catchError((error) =>
+                        of(
+                            ProductsActions.deleteSelectedProductFailure({
+                                error,
+                            })
+                        )
+                    )
+                );
+            })
+        )
+    );
+
+    updateProducts$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductsActions.updateProduct),
+      switchMap(({ payload }) => {
+        console.log('payload', payload);
+        const url = `http://localhost:4000/api/products/${payload._id}`;
+        let obs: Observable<any>;
+        obs = this.http.put(url, payload);
+        return obs.pipe(
+          map((data: any) => {
+            console.log(data);
+            return ProductsActions.updateProductSuccess({
+              response: data,
+              toast: { type: 'SUCCESS', titleKey: 'CHANGES_SAVED' },
+            });
+          }),
+          catchError((error) =>
+            of(
+                ProductsActions.updateProductFailure({
+                error,
+            })
+            )
+          )
+        );
+      })
+    )
+  );
+  
 }

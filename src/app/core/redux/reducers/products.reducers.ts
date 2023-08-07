@@ -23,8 +23,10 @@ const _reducer = createReducer(
       }));
     }),    
     produceOn(ProductsActions.getProductByIdSuccess, (draft, action) => {
-      console.log('selectedProduct');
      draft.selectedProduct = action.response;
+    }),
+    produceOn(ProductsActions.clearSelectedProduct, (draft, action) => {
+     draft.selectedProduct = {};
     }),
   );
   

@@ -15,6 +15,42 @@ export const createProductFailure = createAction(
     props<{  error: any }>()
 );
 
+export const updateProduct = createAction(
+  '[Product] Updating the existing Product',
+  props<{ payload: any }>()
+);
+
+export const updateProductSuccess = createAction(
+  '[Product] Updating the existing Product success',
+  props<{ response: any, toast: any }>()
+); 
+
+export const updateProductFailure = createAction(
+  '[Product] Updating the existing Product failure',
+  props<{ error: any }>()
+);
+
+
+export const clearSelectedProduct = createAction(
+  '[Product] Clearing the fields'
+);
+
+
+export const deleteSelectedProduct = createAction(
+  '[Product] Deleting selected Product',
+  props<{ id: string }>()
+);
+
+export const deleteSelectedProductSuccess = createAction(
+  '[Product] Deleting selected Product success',
+  props<{ response: any, toast: any }>()
+);
+
+export const deleteSelectedProductFailure = createAction(
+  '[Product] Deleting selected Product failure',
+  props<{ error: any }>()
+);
+
 export const getProductById = createAction(
   '[Product] get product by Id',
   props<{ id: string }>()

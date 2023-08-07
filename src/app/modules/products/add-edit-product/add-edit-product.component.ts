@@ -102,8 +102,21 @@ export class AddEditProductComponent {
   }
 
   onUpdate() {
-    const payload = this.form.value;
-    console.log(payload)
+    this.productData = {
+      ...this.productData,
+      ...this.form.value,
+    }
+    this.store.dispatch(ProductsActions.updateProduct({ payload: this.productData }));
+    this.actions$
+      .pipe(
+        ofType(ProductsActions.updateProductSuccess),
+        rxmap(() => {
+          this.store.dispatch(ProductsActions.getAllProducts());
+          this.store.dispatch(ProductsActions.clearSelectedProduct());
+          this.router.navigate(['/products/manage']);
+        })
+      )
+      .subscribe();
   }
 
   onSubmit() {
