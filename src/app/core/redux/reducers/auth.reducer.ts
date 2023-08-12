@@ -54,9 +54,11 @@ const _reducer = createReducer(
         draft.isLoading = false;
         draft.error = action.error;
     }),
-    produceOn(AuthActions.logout, (draft) => {
+    produceOn(AuthActions.logoutSuccess, (draft, action) => {
         draft.sessionId = '';
-    }),
+        draft.refreshToken = '';
+        delete sessionStorage['userSession'];
+    })
 );
 
 export function reducer(state: State | undefined, action: Action) {

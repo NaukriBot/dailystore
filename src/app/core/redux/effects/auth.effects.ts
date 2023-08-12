@@ -13,28 +13,7 @@ import { Observable, of } from 'rxjs';
 @Injectable()
 export class AuthEffects {
 
-    // login$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(AuthActions.login),
-    //         switchMap(({ user }) => {
-    //             // this.store.dispatch(startLoadingBar());
-    //             return this.http
-    //                 .post('http://localhost:4000/api/admin-auth/login', {
-    //                     email: user.userId,
-    //                     password: user.password,
-    //                 })
-    //                 .pipe(
-    //                     map((data: any) => {
-    //                         // this.store.dispatch(stopLoadingBar());
-    //                         return AuthActions.loginSuccess({ response: data });
-    //                     }),
-    //                     catchError((error) => of(AuthActions.loginFailure({ error })))
-    //                 );
-    //         })
-    //     )
-    // );
-
-    placeOrder$ = createEffect(() =>
+    login$ = createEffect(() =>
         this.actions$.pipe(
         ofType(AuthActions.login),
         switchMap(({ user }) => {
@@ -62,6 +41,36 @@ export class AuthEffects {
         })
         )
     );
+
+    logout$ = createEffect(() =>
+        this.actions$.pipe(
+        ofType(AuthActions.logout),
+        switchMap(({ refreshToken }) => {
+            const url = 'http://localhost:4000/api/admin-auth/logout';
+            let obs: Observable<any>;
+            obs = this.http.post(url, {
+                refresh_token: refreshToken
+            });
+            return obs.pipe(
+            map((data: any) => {
+                console.log(data);
+                return AuthActions.logoutSuccess({
+                    response: data,
+                });
+            }),
+            catchError((error) =>
+                of(
+                    AuthActions.logoutFailure({
+                    error,
+                })
+                )
+            )
+            );
+        })
+        )
+    );
+
+
 
     constructor(
         private actions$: Actions,

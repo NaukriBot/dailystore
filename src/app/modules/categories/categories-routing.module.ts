@@ -4,6 +4,7 @@ import { CategoriesComponent } from './categories.component';
 import { AddEditCategoryComponent } from './add-edit-category/add-edit-category.component';  // You haven't used this yet
 import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { ManageSubCategoriesComponent } from './manage-sub-categories/manage-sub-categories.component';
+import { authGuard } from 'src/app/core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
   {
     path: '',
     component: CategoriesComponent,
+    canActivate: [authGuard], 
     // data: { breadcrumb: 'Categories' },
     children: [
       {

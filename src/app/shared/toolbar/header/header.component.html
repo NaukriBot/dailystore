@@ -40,8 +40,11 @@
     </div>
     <div class="right-section">
         <button mat-icon-button (click)="goToCart()">
-        <mat-icon>shopping_cart</mat-icon>
-        <mat-badge [matBadge]="getTotalItems()" matBadgeColor="accent" matBadgeSize="small"> </mat-badge>
+            <mat-icon>shopping_cart</mat-icon>
+            <mat-badge [matBadge]="getTotalItems()" matBadgeColor="accent" matBadgeSize="small"> </mat-badge>
+        </button>
+        <button mat-icon-button (click)="logout()" matTooltip="Logout">
+            <mat-icon>logout</mat-icon>
         </button>
     </div>
 </mat-toolbar>
