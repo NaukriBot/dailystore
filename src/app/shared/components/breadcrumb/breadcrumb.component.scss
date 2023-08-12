@@ -1,0 +1,22 @@
+// breadcrumb.component.scss
+
+.breadcrumb {
+  background-color: transparent; // Removing default background to inherit from the container
+  padding: 8px 15px; // Slight padding adjustment for aesthetics
+  margin-bottom: 0; // Removes the default bottom margin
+  
+  .breadcrumb-item {
+      &.active a {
+          color: rgba(0, 0, 0, 0.6); // Dimming the active breadcrumb item for clarity
+      }
+
+      a {
+          &:hover {
+              text-decoration: underline; // Underline on hover for better UX
+          }
+      }
+      a{
+        cursor: pointer;
+      }
+  }
+}

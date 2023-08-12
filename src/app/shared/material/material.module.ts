@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -17,6 +17,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatChipsModule} from '@angular/material/chips';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -34,12 +35,17 @@ const MATERIAL_MODULES = [
   PortalModule,
   CdkMenuModule,
   MatTooltipModule,
-  MatChipsModule
+  MatChipsModule,
+  MatSidenavModule,
 ];
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, ...MATERIAL_MODULES],
   exports: MATERIAL_MODULES,
+  providers:[
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true,
+      disableClose: true}}
+  ]
 })
 export class MaterialModule {}

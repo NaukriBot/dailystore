@@ -34,3 +34,10 @@
     A200
   ); // using the contrast color for text
 }
+
+.text-black{
+  color: map-get(
+    $love-primary-palette,
+    A900
+  ); 
+}

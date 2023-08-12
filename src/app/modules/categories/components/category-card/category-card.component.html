@@ -1,0 +1,31 @@
+<mat-card class="mb-4">
+  <img mat-card-image [src]="product.imageUrl" [alt]="product?.name" />
+  <app-card-badge *ngIf="product" [badge]="product?.status" [color]="'others-purple'"></app-card-badge>
+  <app-card-badge *ngIf="product?.categoryInfo" [badge]="product?.categoryInfo?.name"
+    [position]="'top-right'"></app-card-badge>
+  <mat-card-content>
+    <p class="product-name">
+      {{ product?.name }}
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions class="d-flex flex-column justify-content-end mt-2">
+    <div class="w-100" *ngIf="!product?.categoryId">
+      <button class="w-100" mat-raised-button *ngIf="product?.totalSubCategories" color="primary" (click)="onAction('view',product)">
+        View Sub Categories ({{ product?.totalSubCategories }})
+      </button>
+      <button class="w-100" mat-raised-button *ngIf="!product?.totalSubCategories" color="primary" (click)="onAction('addNew',product)">
+        Add New Sub Categories
+      </button>
+    </div>
+    <div class="d-flex flex-row flex-gap-3 w-100 justify-content-between mt-2">
+      <button mat-raised-button color="primary" class="w-100" (click)="onAction('edit',product)">
+        Edit
+      </button>
+      <button mat-raised-button color="warn" class="w-100" (click)="onAction('delete',product)">
+        Delete
+      </button>
+    </div>
+
+  </mat-card-actions>
+</mat-card>

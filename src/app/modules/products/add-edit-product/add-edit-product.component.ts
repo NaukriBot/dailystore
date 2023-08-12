@@ -132,4 +132,8 @@ export class AddEditProductComponent {
       )
       .subscribe();
   }
+
+  ngOnDestroy(){
+    this.store.dispatch(ProductsActions.clearSelectedProduct());
+  }
 }

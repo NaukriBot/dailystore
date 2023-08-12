@@ -1,0 +1,90 @@
+
+@import "../assets/scss/variables.scss";
+.sidenav-container {
+    height: 100vh;
+}
+
+.sidenav-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.links {
+    flex-grow: 1;
+}
+
+.actions {
+    border-top: 1px solid map-get($love-primary-palette, contrast, 400); // A light border color
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between; // Distributes the buttons
+
+    button {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: map-get(
+            $love-primary-palette,
+            contrast,
+            400
+        );
+        mat-icon {
+            margin-right: 5px; // A bit of spacing between the icon and the text
+        }
+    }
+}
+
+mat-sidenav {
+    margin-top: 64px;
+    width: 250px;
+    background-color: map-get(
+        $love-primary-palette,
+        500
+    );
+    color: map-get(
+        $love-primary-palette,
+        contrast,
+        500
+    );
+}
+
+mat-sidenav a {
+    font-weight: 500;
+    color: map-get(
+        $love-primary-palette,
+        contrast,
+        400
+    );
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px 20px;
+    // display: block;
+    transition: background-color 0.3s;
+    mat-icon{
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+mat-sidenav a:hover {
+    background-color: map-get(
+        $love-primary-palette,
+        contrast,
+        400
+    );
+    color: map-get(
+        $love-primary-palette,
+        A700
+    );
+}
+
+mat-sidenav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}

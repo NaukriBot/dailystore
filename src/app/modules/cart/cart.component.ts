@@ -1,8 +1,12 @@
-import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef, inject } from '@angular/core';
 import { BaseModalService, CartService } from 'src/app/core/providers';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddAddressComponent } from './add-address/add-address.component';
-
+import { Store } from '@ngrx/store';
+import { placeOrder } from 'src/app/core/redux/actions/categories.actions';
+import { getOrderData } from 'src/app/core/redux/selectors/categories.selectors';
+import { isEmpty } from 'lodash';
+declare var Razorpay: any; 
 // import { DynamicChildLoaderDirective } from 'src/app/shared/directives/dynamic-child-loader.directive';
 
 @Component({
@@ -11,9 +15,7 @@ import { AddAddressComponent } from './add-address/add-address.component';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
-  // @ViewChild('contentTemplate', {read: ViewContainerRef}) contentTemplate: any = ViewContainerRef;
-  // @ViewChild(DynamicChildLoaderDirective, { static: true })
-  // dynamicChildLoader!: DynamicChildLoaderDirective;
+  store = inject(Store);
   cartItems: any[] = [
     {
       "id": 1,
@@ -61,9 +63,9 @@ export class CartComponent {
       "quantity": 2
     }
   ];
+  order!: any; 
 
   constructor(public dialog: MatDialog,public baseModalService: BaseModalService,public cartService: CartService){
-    
   }
 
   ngOnInit(){
@@ -81,12 +83,6 @@ export class CartComponent {
     }
     this.baseModalService.open(AddAddressComponent,modalData,'addressModal')
   }
-
-  proceedToPay(){
-  }
-
-  // Define columns for the table
-  displayedColumns: string[] = ['select', 'image', 'product', 'sku', 'quantity', 'price', 'remove'];
 
   removeFromCart(item: any) {
     // Logic to remove the item from the cart

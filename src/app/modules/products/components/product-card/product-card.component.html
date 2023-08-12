@@ -1,0 +1,42 @@
+<mat-card class="example-card">
+    <app-card-badge *ngIf="product" [badge]="product?.status" [color]="'others-purple'"></app-card-badge>
+    <app-card-badge *ngIf="product?.categoryInfo" [badge]="product?.categoryInfo?.name" [position]="'top-right'"></app-card-badge>    
+    
+      <img mat-card-image [src]="product.imageUrl" [alt]="product.name">
+      <mat-card-content>
+        <p class="product-name">
+          {{product.name}}
+        </p>
+        <p class="product-weight">
+          {{product.weight}}
+        </p>
+        <p class="d-flex justify-content-between">
+          <span>
+            Cost Price
+          </span>
+          <span>{{product.costPrice | currency:'INR':true}}</span>
+        </p>
+        <p class="d-flex justify-content-between">
+          <span>
+            Selling Price
+          </span>
+          <span>{{product.sellingPrice | currency:'INR':true}}</span>
+        </p>
+        <p class="d-flex justify-content-between">
+          <span>
+            Discounted Price
+          </span>
+          <span>{{product.discountedPrice | currency:'INR':true}}</span>
+        </p>
+
+        
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button (click)="onEdit(product)">Edit</button>
+        <button mat-button color="warn" (click)="onDelete(product)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  
+    
+  
+   

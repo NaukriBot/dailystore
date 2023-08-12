@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <mat-card>
+                <mat-card-content>
+                    <div class="d-flex flex-row justify-content-between">
+                        <h3 class="header-text">Sub Categories</h3>
+                        <div class="d-flex flex-row">
+                            <mat-icon class="cursor-pointer" matTooltip="Refresh" matTooltipPosition="above">
+                                refresh
+                            </mat-icon>
+                            <mat-icon (click)="addCategory()" class="cursor-pointer" matTooltip="Add New"
+                                matTooltipPosition="above">
+                                add
+                            </mat-icon>
+                            <mat-icon class="cursor-pointer" matTooltip="Filter" matTooltipPosition="above">
+                                filter_alt
+                            </mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-3" *ngFor="let product of productList">
+            <app-category-card [product]="product" (action)="handleAction($event)"></app-category-card>
+        </div>
+    </div>
+</div>

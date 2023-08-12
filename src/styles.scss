@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "node_modules/bootstrap/scss/bootstrap";
 @import "./assets/scss/variables";
 @import "./assets/scss/mat-themes.scss";
 @import "./assets/scss/mat-colors.scss";
@@ -18,18 +18,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 }
 
 .app-content{
-    margin-top: 80px;
+    margin-top: 85px;
+    height: calc(100% - 100px) !important;
 }
 
 
-.page-section{
-    // margin-top: 20px;
-    padding: 16px 0px;
-    h3{
-        font-size: 20px;
-        font-weight: 500;
-    }
+.header-text {
+    font-size: 16px !important;
+    font-weight: 450 !important;
+    margin-bottom: 0 !important;
 }
+
+
+// .page-section{
+//     // margin-top: 20px;
+//     padding: 16px 0px;
+//     h3{
+//         font-size: 20px;
+//         font-weight: 500;
+//     }
+// }
 
 .flex{
     display: flex;
@@ -41,6 +49,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 
 .flex-column{
     flex-direction: column;
+}
+
+.flex-gap-5{
+    gap:.7rem!important;
+}
+
+.flex-gap-3{
+    gap:.4rem!important;
 }
 
 
@@ -64,4 +80,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 
 .w-100{
     width: 100%;
+}
+
+
+.fw-bold-500{
+    font-weight: 500 !important;
 }

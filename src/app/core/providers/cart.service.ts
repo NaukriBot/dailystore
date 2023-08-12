@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { isUndefined } from 'lodash';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -11,10 +12,19 @@ export class CartService {
   constructor() { }
 
   addToCart = (item:any) =>{
-    item.quantity = 1;
-    this.cart.push(item)
+    // item.quantity = 1;
+    // this.cart.push(item)
+    // this.cartSubject.next(this.cart);
+    const productIndex = this.cart.findIndex((cartItem:any) => cartItem.id === item.id);
+    if (productIndex > -1) {
+        this.cart[productIndex].quantity += 1;
+    } else {
+        item.quantity = 1;
+        this.cart.push(item);
+    }
     this.cartSubject.next(this.cart);
   }
+
 
   // Increment the quantity of a product in the cart
   incrementProductQuantity(productId: number): void {
@@ -61,6 +71,6 @@ export class CartService {
   // Check if an item is already in the cart
   isItemInCart(productId: number): boolean {
     const product = this.cart.find((item:any) => item.id === productId);
-    return !product || product.quantity === 0;
+    return !isUndefined(product);
   }
 }

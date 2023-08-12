@@ -1,8 +1,10 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import { ProductsService } from './core/providers/products.service';
 import { Store } from '@ngrx/store';
 import * as CategoriesActions  from 'src/app/core/redux/actions/categories.actions';
+import { MatSidenav } from '@angular/material/sidenav';
+import { selectIsLoggedIn } from './core/redux/selectors/auth.selector';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,8 +13,9 @@ import * as CategoriesActions  from 'src/app/core/redux/actions/categories.actio
 export class AppComponent implements OnInit, OnDestroy{
   title = 'webapp';
   store =inject(Store);
-  
-  
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+  isLoggedIn = false;
+
   obsUnsubscribe = new Subject<any>();
 
   productList: any = []
@@ -22,11 +25,15 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(){
-    const obs = this.productService.getProduct();
-    obs.subscribe((res)=>{
-        this.productList = res;
-    })
+    this.store.select(selectIsLoggedIn).subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
+
+  }
   
+
+  toggleSidenav() {
+    this.sidenav.toggle();
   }
 
   ngOnDestroy(){

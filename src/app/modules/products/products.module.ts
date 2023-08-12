@@ -6,13 +6,15 @@ import { ProductsComponent } from './products.component';
 import { ManageProductComponent } from './manage-product/manage-product.component';
 import { AddEditProductComponent } from './add-edit-product/add-edit-product.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 
 @NgModule({
   declarations: [
     ProductsComponent,
     ManageProductComponent,
-    AddEditProductComponent
+    AddEditProductComponent,
+    ProductCardComponent
   ],
   imports: [
     CommonModule,
