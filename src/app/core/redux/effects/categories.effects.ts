@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as fromStore from '../reducers/index';
-import { Store } from '@ngrx/store';
 
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
@@ -12,9 +10,35 @@ import * as CategoriesActions from '../actions/categories.actions';
 export class CategoriesEffects {
   constructor(
     private actions$: Actions,
-    private http: HttpClient,
-    private store: Store<fromStore.State>
+    private http: HttpClient
   ) {}
+
+  placeOrder$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CategoriesActions.placeOrder),
+      switchMap(({}) => {
+        const url = 'http://localhost:4000/api/orders';
+        let obs: Observable<any>;
+        obs = this.http.post(url, {});
+        return obs.pipe(
+          map((data: any) => {
+            console.log(data);
+            return CategoriesActions.placeOrderSuccess({
+              response: data,
+              toast: { type: 'SUCCESS', titleKey: 'CHANGES_SAVED' },
+            });
+          }),
+          catchError((error) =>
+            of(
+                CategoriesActions.placeOrderFailure({
+                error,
+            })
+            )
+          )
+        );
+      })
+    )
+  );
 
   createCategories$ = createEffect(() =>
     this.actions$.pipe(

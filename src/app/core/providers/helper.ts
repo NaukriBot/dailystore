@@ -27,3 +27,13 @@ export const checkForChanges = (
     get(changes, `${base}.previousValue${property ? '.' + property : ''}`),
     get(changes, `${base}.currentValue${property ? '.' + property : ''}`)
   );
+
+
+export const emailPhoneRegex =
+  /^(?:\d{12}|\d{11}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,})$/;
+export const numberRegex = '^[0-9]*$';
+export const nonZeroNumberRegex = '^(?!0)[1-9][0-9]*$';
+
+export const CHAR_LENGTH_128 = 128;
+export const CHAR_LENGTH_12 = 12;
+export const CHAR_LENGTH_64 = 64;

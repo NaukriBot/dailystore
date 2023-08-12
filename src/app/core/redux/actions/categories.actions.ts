@@ -110,3 +110,43 @@ export const getAllCategoriesFailure = createAction(
   '[Category] Get all Categories Failure',
   props<{ error: any }>()
 );
+
+
+
+/**
+ * NgRx action to set data for the Categories feature.
+ * 
+ * This action is used to store a shared piece of data in the categories state,
+ * which can be helpful in sharing data between different parts of the application
+ * without persisting it in the URL or other external storage.
+ *
+ * @param data The data to be set in the categories state.
+ */
+export const setSharedData = createAction(
+  '[Categories] Set Shared Data',
+  props<{ data: any }>()
+);
+
+export const clearSharedData = createAction(
+  '[Categories] Clear Shared Data'
+);
+
+
+export const placeOrder = createAction(
+  '[Categories] PlaceOrder'
+);
+
+
+export const placeOrderSuccess = createAction(
+  '[Category] PlaceOrder Success',
+  props<{ response: any, toast: any }>()
+);
+
+/**
+ * Action dispatched when there's an error in creating a category.
+ * @error contains the error details returned from the server or client-side logic.
+ */
+export const placeOrderFailure = createAction(
+  '[Category] PlaceOrder Failure',
+  props<{ error: any }>()
+);

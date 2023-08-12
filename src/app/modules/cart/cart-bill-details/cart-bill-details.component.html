@@ -1,0 +1,30 @@
+<h3>Bill Details</h3>
+      <mat-card class="bill-card">
+        <mat-card-content>
+          <div class="bill-row">
+            <span class="bill-description">MRP</span>
+            <span class="bill-amount">₹627</span>
+          </div>
+          <div class="bill-row">
+            <span class="bill-description">Product discount</span>
+            <span class="bill-amount">₹139</span>
+          </div>
+          <div class="bill-row">
+            <span class="bill-description">Delivery charge</span>
+            <span class="bill-amount">₹25</span>
+          </div>
+          <div class="bill-row">
+            <span class="bill-description">High demand surge charge</span>
+            <span class="bill-amount">₹30</span>
+          </div>
+          <hr class="bill-divider" />
+          <div class="bill-row total-row">
+            <span class="bill-description"><strong>Grand total</strong></span>
+            <span class="bill-amount"><strong>₹518</strong></span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions class="proceed-button-container">
+          <button mat-raised-button color="primary" class="update-address-button" (click)="openDialog()">Update Your Address</button>
+          <button mat-raised-button color="primary" class="proceed-button" (click)="proceedToPay()">Proceed to Pay</button>
+        </mat-card-actions>
+      </mat-card>

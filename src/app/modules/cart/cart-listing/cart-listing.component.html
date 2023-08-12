@@ -1,0 +1,32 @@
+<h3>My Cart</h3>
+      <div class="cart-box mb-3">
+        <mat-card *ngFor="let item of cartItems" class="mb-2 bill-card">
+          <div class="d-flex align-items-center">
+            <div class="product-image">
+              <img [src]="item.imageUrl" alt="{{ item.name }}">
+            </div>          
+            <div class="product-content">
+              <h5 class="card-title mb-2">{{ item.name }}</h5>
+              <p class="card-text mb-2">Weight: {{ item.weight }}</p>
+              <p class="card-price-text">
+                <del>{{ item.price | currency }}</del> 
+                <span>{{ item.discount | currency }}</span>
+              </p>
+              <div class="cart-item-actions d-flex justify-content-between align-items-center">
+                <div class="quantity-actions">
+                  <button mat-icon-button  color="primary" (click)="incrementQuantity(item)">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                  <span class="mx-2">{{ item.quantity }}</span>
+                  <button mat-icon-button  color="primary"  (click)="decrementQuantity(item)">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                </div>
+                <button mat-icon-button color="warn" (click)="removeFromCart(item)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>

@@ -1,0 +1,44 @@
+
+.bill-card {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .bill-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+  
+  .bill-description {
+    font-size: 16px;
+  }
+  
+  .bill-amount {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .bill-divider {
+    border-color: #e0e0e0;
+  }
+  
+  .total-row {
+    font-size: 18px;
+  }
+  
+  .proceed-button-container {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .proceed-button {
+    width: 100%;
+  }
+  
+  .update-address-button{
+      width: 100%;
+      margin-bottom: 10px;
+  }
+  

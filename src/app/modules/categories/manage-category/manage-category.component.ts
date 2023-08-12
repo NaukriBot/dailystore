@@ -1,56 +1,90 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ProductsService } from 'src/app/core/providers';
-import { AddEditCategoryComponent } from '../add-edit-category/add-edit-category.component';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import * as CategoriesActions  from 'src/app/core/redux/actions/categories.actions';
-import * as CategorySelecors  from 'src/app/core/redux/selectors/categories.selectors';
 import { Actions, ofType } from '@ngrx/effects';
 import { map as rxmap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import * as CategoriesActions from 'src/app/core/redux/actions/categories.actions';
+import * as CategorySelectors from 'src/app/core/redux/selectors/categories.selectors';
+import { AddEditCategoryComponent } from '../add-edit-category/add-edit-category.component';
+
 @Component({
   selector: 'app-manage-category',
   templateUrl: './manage-category.component.html',
-  styleUrls: ['./manage-category.component.scss']
+  styleUrls: ['./manage-category.component.scss'],
 })
-export class ManageCategoryComponent implements OnInit{
-  productService = inject(ProductsService);
-  dialog = inject(MatDialog);
-  store =inject(Store);
-  actions$ =  inject(Actions);
-
+export class ManageCategoryComponent implements OnInit {
   productList: any[] = [];
- 
-  addCategory = () =>{
-    const dialogRef = this.dialog.open(AddEditCategoryComponent,{
+
+  constructor(
+    private dialog: MatDialog,
+    private store: Store,
+    private actions$: Actions,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.store
+      .select(CategorySelectors.getOnlyCategories)
+      .subscribe((data: any) => {
+        this.productList = data;
+      });
+  }
+
+  addCategory(): void {
+    this.dialog.open(AddEditCategoryComponent, {
       width: '500px',
       height: 'auto',
     });
   }
-  ngOnInit(){ 
-    // this.store.dispatch(CategoriesActions.getAllCategories());
-    this.store.select(CategorySelecors.getCategoriesList).subscribe((data: any) => this.productList = data);
+
+  handleAction({ type, data }: { type: string; data: any }): void {
+    switch (type) {
+      case 'edit':
+        this.handleEdit(data);
+        break;
+      case 'delete':
+        this.handleDelete(data);
+        break;
+      case 'view':
+        this.router.navigate([
+          `/categories/${data?._id}/sub-categories/manage`,
+        ]);
+        break;
+      case 'addNew':
+        this.router.navigate([
+          `/categories/${data?._id}/sub-categories/manage`,
+        ]);
+        this.store.dispatch(
+          CategoriesActions.setSharedData({ data: 'add-new' })
+        );
+        break;
+    }
   }
 
-  handleEdit(product: any) {
-    // Open the dialog and edit
-    const dialogRef = this.dialog.open(AddEditCategoryComponent, {
+  handleEdit(product: any): void {
+    this.dialog.open(AddEditCategoryComponent, {
       width: '500px',
       height: 'auto',
       data: {
-        product: product
-      }
+        product,
+      },
     });
   }
-  
-  handleDelete(product: any) {
-    this.store.dispatch(CategoriesActions.deleteCategory({ itemId: product._id }));
+
+  handleDelete(product: any): void {
+    this.store.dispatch(
+      CategoriesActions.deleteCategory({ itemId: product._id })
+    );
     this.actions$
       .pipe(
         ofType(CategoriesActions.deleteCategorySuccess),
-        rxmap(() => {
-          this.store.dispatch(CategoriesActions.getAllCategories());
-        })
+        rxmap(() => this.store.dispatch(CategoriesActions.getAllCategories()))
       )
       .subscribe();
+  }
+
+  refreshData(): void {
+    // Add logic to refresh data or dispatch the appropriate action.
   }
 }

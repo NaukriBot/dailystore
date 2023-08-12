@@ -1,4 +1,4 @@
-$love-primary-palette: (
+$love-primary-palette-old: (
   50: #C3E7E6,
   100: #93D4D2,
   200: #63C1BE,
@@ -13,6 +13,7 @@ $love-primary-palette: (
   A200: #30BBBB,
   A400: #00AAAA,
   A700: #038C82, // The specific color you provided as the base
+  A900: #000,
   contrast: (
     50: rgba(black, 0.87),
     100: rgba(black, 0.87),
@@ -63,6 +64,39 @@ $melody-accent-palette: (
     A700: white,
   )
 );
+
+$love-primary-palette: (
+  50: #f3e3f2,
+  100: #e0bade,
+  200: #cd92c9,
+  300: #ba6ab4,
+  400: #a84c9e,
+  500: #4a164b,
+  600: #3c1240,
+  700: #2e0e35,
+  800: #200a2a,
+  900: #13061f,
+  A100: #ebb6eb,
+  A200: #d897d8,
+  A400: #a339a4,
+  A700: #781f7d,
+  contrast: (50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+
 
 
 $purple-palette: (

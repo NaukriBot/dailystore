@@ -3,14 +3,14 @@ import { CartService } from 'src/app/core/providers/cart.service';
 
 
 @Component({
-  selector: 'app-category-card',
-  templateUrl: './category-card.component.html',
-  styleUrls: ['./category-card.component.scss']
+  selector: 'app-product-card',
+  templateUrl: './product-card.component.html',
+  styleUrls: ['./product-card.component.scss']
 })
-export class CategoryCardComponent {
+export class ProductCardComponent {
   @Input() product: any = [];
   @Output() edit = new EventEmitter<any>();
-  @Output() delete = new EventEmitter<any>();
+  @Output() delete = new EventEmitter<any>(); 
 
   constructor(public cartService: CartService){
 
@@ -37,7 +37,6 @@ export class CategoryCardComponent {
       console.log(res);
     })
   }
-
   onEdit(product:any){
     this.edit.emit(this.product);
   }
