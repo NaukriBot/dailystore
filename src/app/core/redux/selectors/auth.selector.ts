@@ -16,6 +16,11 @@ export const getSessionId = createSelector(
     (state: AuthState) => state.sessionId
 );
 
+export const getRefreshToken = createSelector(
+    selectAuthState,
+    (state: AuthState) => state.refreshToken
+)
+
 // this is to print the user profile in navbar
 export const getUserProfile = createSelector(
     selectAuthState,
