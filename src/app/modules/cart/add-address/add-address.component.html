@@ -1,106 +1,20 @@
-<form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="w-100">
-                    <mat-label>Title</mat-label>
-                    <mat-select formControlName="title">
-                        <mat-option value="Miss.">Miss.</mat-option>
-                        <mat-option value="Mrs.">Mrs.</mat-option>
-                        <mat-option value="Mr.">Mr.</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="name" />
-                    <mat-label>Name</mat-label>
-                </mat-form-field>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="address1" />
-                    <mat-label>Flat/House/Office no.</mat-label>
-                </mat-form-field>
-            </div>
-        </div> 
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="address2" />
-                    <mat-label>Street/Society/Office Name</mat-label>
-                </mat-form-field>
-            </div>
-        </div> 
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="landmark" />
-                    <mat-label>Landmark</mat-label>
-                </mat-form-field>
-            </div>
-        </div> 
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="city" [matAutocomplete]="cityAutocomplete" />
-                    <mat-label>City</mat-label>
-                </mat-form-field>
-                <mat-autocomplete #cityAutocomplete="matAutocomplete" autoActiveFirstOption>
-                    <mat-option *ngFor="let option of cityOptions$ | async" [value]="option.name">
-                        {{option.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </div>
-        </div> 
-        <div class="col-md-6">
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="state" [matAutocomplete]="stateAutocomplete" />
-                    <mat-label>State</mat-label>
-                </mat-form-field>
-                <mat-autocomplete #stateAutocomplete="matAutocomplete" autoActiveFirstOption>
-                    <mat-option *ngFor="let option of stateOptions$ | async" [value]="option.name">
-                        {{option.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </div>
-        </div> 
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="country" [matAutocomplete]="countryAutocomplete" />
-                    <mat-label>Country</mat-label>
-                </mat-form-field>
-                <mat-autocomplete #countryAutocomplete="matAutocomplete" autoActiveFirstOption>
-                    <mat-option *ngFor="let option of countryOptions$ | async" [value]="option.name">
-                        {{option.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </div>
-        </div> 
-        <div class="col-md-6">
-            <div class="form-group">
-                <mat-form-field appearance="outline" class="w-100">
-                    <input matInput formControlName="pincode" />
-                    <mat-label>Pincode</mat-label>
-                </mat-form-field>
-            </div>
-        </div> 
-    </div>
-</form>
+<app-base-modal
+  [title]="!isEdit ? 'Add New ' + formTitle : 'Update ' + formTitle">
+  <ng-container body>
+    <div class="form-group mb-3">
+        <button mat-raised-button color="primary" *ngIf="!isAddEdit" (click)="showComponent('addEdit')" class="w-100">Add New Address</button>
+        <button mat-raised-button color="primary" *ngIf="isAddEdit" (click)="showComponent('list')" class="w-100">Manage Address</button>
+    </div>    
 
+    <app-add-edit-address *ngIf="isAddEdit"></app-add-edit-address>
+    <app-list-address [userAddresses]="activeUser?.addresses" *ngIf="!isAddEdit"></app-list-address>
+  </ng-container>
+  <ng-container actions>
+    <ng-container *ngIf="isAddEdit">
+        <button mat-button (click)="closeDialog()">Cancel</button>
+        <button mat-button cdkFocusInitial (click)="onSubmit()">
+        {{ getActionButtonLabel() }}
+        </button>
+    </ng-container>    
+  </ng-container>
+</app-base-modal>

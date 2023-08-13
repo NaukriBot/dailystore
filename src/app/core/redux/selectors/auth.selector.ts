@@ -25,6 +25,8 @@ export const getRefreshToken = createSelector(
 export const getUserProfile = createSelector(
     selectAuthState,
     (session) => ({
+        addresses: session['addresses'],
+        userId: session['userId'],
         name: session['name'],
         email: session['email'],
     })
