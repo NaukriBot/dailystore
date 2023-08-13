@@ -6,9 +6,9 @@ import { Subject } from 'rxjs';
 import { Actions, ofType } from '@ngrx/effects';
 import { map, takeUntil } from 'rxjs/operators';
 import { CHAR_LENGTH_128, emailPhoneRegex } from '../../../core/providers/helper';
-import { login, loginFailure } from '../../../core/redux/actions/auth.actions';
+import { getAllAddresses, login, loginFailure, loginSuccess } from '../../../core/redux/actions/auth.actions';
 import { Router } from '@angular/router';
-import { selectIsLoggedIn } from '../../../core/redux/selectors/auth.selector';
+import { getUserProfile, selectIsLoggedIn } from '../../../core/redux/selectors/auth.selector';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +21,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   loginFailure = false;
   hide = true;
+  activeUser!:any;
 
   constructor(
     private router: Router,
@@ -36,6 +37,10 @@ export class LoginComponent {
         this.router.navigate(['/dashboard']);
       }
       console.log(isLoggedIn);
+    });
+
+    this.store.select(getUserProfile).subscribe((isLoggedIn) => {
+      this.activeUser = isLoggedIn;
     });
   }
 
@@ -68,6 +73,15 @@ export class LoginComponent {
     };
     console.log(this.user);
     this.store.dispatch(login({ user: this.user }));
+    this.actions$
+      .pipe(
+        ofType(loginSuccess),
+        takeUntil(this.destroyed$),
+        map((response) => {
+          this.store.dispatch(getAllAddresses({userId: this.activeUser?.userId}));
+        })
+      )
+      .subscribe();
     this.actions$
       .pipe(
         ofType(loginFailure),

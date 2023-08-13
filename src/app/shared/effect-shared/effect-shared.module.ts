@@ -4,6 +4,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CategoriesEffects } from 'src/app/core/redux/effects/categories.effects';
 import { ProductsEffects } from 'src/app/core/redux/effects/products.effects';
 import { AuthEffects } from 'src/app/core/redux/effects/auth.effects';
+import { CartEffects } from 'src/app/core/redux/effects/cart.effects';
 
 
 
@@ -14,7 +15,8 @@ import { AuthEffects } from 'src/app/core/redux/effects/auth.effects';
     EffectsModule.forFeature([
       CategoriesEffects,
       ProductsEffects,
-      AuthEffects
+      AuthEffects,
+      CartEffects
     ])
   ],
   exports: [EffectsModule]

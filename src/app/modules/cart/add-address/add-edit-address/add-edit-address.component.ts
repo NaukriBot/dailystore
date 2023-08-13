@@ -6,35 +6,22 @@ import * as AuthActions from 'src/app/core/redux/actions/auth.actions';
 import { getUserProfile } from 'src/app/core/redux/selectors/auth.selector';
 
 @Component({
-  selector: 'app-add-address',
-  templateUrl: './add-address.component.html',
-  styleUrls: ['./add-address.component.scss'],
+  selector: 'app-add-edit-address',
+  templateUrl: './add-edit-address.component.html',
+  styleUrls: ['./add-edit-address.component.scss']
 })
-export class AddAddressComponent {
-
+export class AddEditAddressComponent {
   formTitle: string = 'Address';
   isEdit: boolean = false;
   addressForm!: FormGroup;
   activeUser!: any;
-  isAddEdit = false;
   
-  constructor(public fb: FormBuilder,private store: Store, private dialogRef: MatDialogRef<AddAddressComponent>) {
+  constructor(public fb: FormBuilder,private store: Store, private dialogRef: MatDialogRef<AddEditAddressComponent>) {
     this.setupAddressForm();
     this.valueChangesFields();
   }
   handleAction(){
 
-  }
-
-  showComponent(cmp:string){
-    switch(cmp){
-      case 'addEdit':
-        this.isAddEdit = true;
-        break;
-      case 'list':
-        this.isAddEdit = false;
-        break;
-    }
   }
 
   getActionButtonLabel(): string {
@@ -48,7 +35,6 @@ export class AddAddressComponent {
   ngOnInit(){
     this.store.select(getUserProfile).subscribe((data: any) =>{
       this.activeUser = data;
-      console.log(this.activeUser);
     });
   }
 

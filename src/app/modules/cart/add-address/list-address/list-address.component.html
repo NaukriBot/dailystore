@@ -1,0 +1,8 @@
+<mat-selection-list #shoes [multiple]="false">
+    <mat-list-option *ngFor="let address of userAddresses" [value]="address?._id">
+      <span>
+        {{address?.title}} {{address?.name}}, {{address?.address1}}, {{address?.address2}}, {{address?.landmark}}, {{address?.city}}, {{address?.state}}, {{address?.country}}
+      </span>        
+    </mat-list-option>
+</mat-selection-list>
+

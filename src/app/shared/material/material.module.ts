@@ -18,6 +18,7 @@ import { CdkMenuModule } from '@angular/cdk/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -37,6 +38,7 @@ const MATERIAL_MODULES = [
   MatTooltipModule,
   MatChipsModule,
   MatSidenavModule,
+  MatListModule
 ];
 
 @NgModule({
