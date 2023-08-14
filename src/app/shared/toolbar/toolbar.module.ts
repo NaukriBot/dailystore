@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
+import { SidebarComponent } from './side-bar/sidebar.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -16,6 +18,7 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     HeaderComponent,
+    SidebarComponent
   ]
 })
 export class ToolbarModule { }
