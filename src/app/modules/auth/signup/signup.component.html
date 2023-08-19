@@ -8,18 +8,26 @@
                     </h5>
                 </mat-card-title>
                 <mat-card-subtitle>
-                    <h6 class= "mb-3 text-muted">
+                    <h6 class="mb-3 text-muted">
                         Welcome to Travluk Team
                     </h6>
                 </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-                <form class="my-2">
+                <form class="my-2" [formGroup]="signupForm">
                     <div class="row d-flex flex-column">
                         <div class="col mb-3">
                             <div class="form-group">
                                 <mat-form-field appearance="outline" class="w-100">
-                                    <input type="text" matInput>
+                                    <input type="text" matInput formControlName="name">
+                                    <mat-label>Name</mat-label>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col mb-3">
+                            <div class="form-group">
+                                <mat-form-field appearance="outline" class="w-100">
+                                    <input type="text" matInput formControlName="email">
                                     <mat-label>Email</mat-label>
                                 </mat-form-field>
                             </div>
@@ -27,7 +35,7 @@
                         <div class="col mb-3">
                             <div class="form-group">
                                 <mat-form-field appearance="outline" class="w-100">
-                                    <input type="text" matInput>
+                                    <input type="password" matInput formControlName="password">
                                     <mat-label>Password</mat-label>
                                 </mat-form-field>
                             </div>
@@ -35,9 +43,13 @@
                         <div class="col mb-3">
                             <div class="form-group">
                                 <mat-form-field appearance="outline" class="w-100">
-                                    <input type="text" matInput>
+                                    <input type="password" matInput formControlName="repassword">
                                     <mat-label>Repeat Password</mat-label>
                                 </mat-form-field>
+                                <!-- {{!signupForm.value.repassword | json}} -->
+                                <div class="error-message" *ngIf="signupForm.value.repassword && signupForm.errors?.['PasswordNoMatch']">
+                                    Password does'nt match.
+                                </div>
                             </div>
                         </div>
                         <div class="col mb-3">
@@ -50,7 +62,9 @@
                         </div>
                         <div class="col mb-3">
                             <div class="form-group">
-                                <button class="btn btn-success w-100" type="submit">Sign Up</button>
+                                <button class="btn btn-success w-100" type="submit" (click)="onSubmit()"
+                                    [disabled]="!signupForm.valid" [style.opacity]="signupForm.valid? 1 : 0.7">Sign
+                                    Up</button>
                             </div>
                         </div>
                         <div class="col text-center">

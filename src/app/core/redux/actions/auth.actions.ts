@@ -12,6 +12,16 @@ export const loginFailure = createAction(
   props<{ error: any }>()
 );
 
+export const register = createAction('[Auth] register', props<{ register: any }>());
+
+export const registerSuccess = createAction('[Auth] register success',
+props<{ response: any; toast?: any }>()
+);
+
+export const registerFailure = createAction('[Auth] register failure',
+props<{ error: any }>()
+)
+
 export const logout = createAction(
   '[Auth] Logout',
   props<{ refreshToken: string }>()

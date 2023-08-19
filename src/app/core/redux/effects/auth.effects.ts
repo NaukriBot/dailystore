@@ -41,6 +41,36 @@ export class AuthEffects {
     )
   );
 
+  register$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.register),
+      switchMap(({ register }) => {
+        const url = 'http://localhost:4000/api/admin-auth/register';
+        let obs: Observable<any>;
+        obs = this.http.post(url, {
+          name: register.name,
+          email: register.email,
+          password: register.password,
+        });
+        return obs.pipe(
+          map((data: any) => {
+            console.log(data);
+            return AuthActions.registerSuccess({
+              response: data,
+            });
+          }),
+          catchError((error) =>
+            of(
+              AuthActions.registerFailure({
+                error,
+              })
+            )
+          )
+        );
+      })
+    )
+  );
+
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.logout),
